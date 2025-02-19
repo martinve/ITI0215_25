@@ -7,8 +7,8 @@ Code examples for the practice sessions of course "ITI0215 Distributed Systems"
     - using `nodemon` for mode streamlined development process: `nodemon ./server.py 5000`
     - implemented `POST` request handling in server.
     - `client.py` for automating making requests via `requests` library.
-* `prax3` stared constructing P2P network:
-    - extended `http.serveri` implemnentation to be multi threaded
+* `prax3` started to construct P2P network:
+    - extended `http.server`-based implemnentation to be multi threaded
     - application architecture improvements; configuration management.
     - started to implement topology and scenario as describred in `SCENARIO.md` 
 
