@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 
-from http.server import HTTPServer, BaseHTTPRequestHandler
+from http.server import ThreadingHTTPServer, BaseHTTPRequestHandler
+import threading
 import urllib.parse as urlparse
 import sys
+import json
 
 """
 Routes
@@ -12,9 +14,25 @@ Routes
 
 """
 
+addrlist = [
+        "127.0.0.1:5000", 
+        "127.0.0.1:5002",
+        "127.0.0.1:5003"
+    ]
+
+
 def get_known_addresses():
-    return ["8000", "8001", "8003"]
+    return addrlist
     ## return "Getting a list of known addresses\n"
+
+
+def add_known_address(port):
+    new_addr = f"127.0.0.1:{port}"
+    if new_addr in addrlist:
+        print(f"Port:{port} is already in the list")
+    else:
+        addrlist.append(new_addr)
+    return addrlist
 
 
 
@@ -28,7 +46,9 @@ class MyHandler(BaseHTTPRequestHandler):
 
         if parsed.path == "/addr":
             result = get_known_addresses()
-            result = ",".join(result)
+            port = urlvars.get("port", [])[0]
+            add_known_address(port)
+            result = json.dumps(result)
         elif parsed.path == "/getblocks":
             result = "Getting a list of blocks\n"    
         elif parsed.path == "/ping":
@@ -46,7 +66,7 @@ class MyHandler(BaseHTTPRequestHandler):
 
         if is_ok:
             self.send_response(200)
-            self.send_header('Content-type', 'text/plain')
+            self.send_header('Content-type', 'application/json')
             self.end_headers()
             self.wfile.write(result.encode("utf-8"))
 
@@ -79,6 +99,25 @@ class MyHandler(BaseHTTPRequestHandler):
         self.wfile.write(out.encode("utf-8"))
 
 
+def start(port):
+    if port < 2000 or port > 65535:
+        print("Port number must be between 1024 and 65535")
+        sys.exit(1)
+
+    server = ThreadingHTTPServer(("", port), MyHandler)
+
+    server_thread = threading.Thread(target=server.serve_forever)
+    server_thread.daemon = True
+    server_thread.start()
+ 
+
+    print(f"Server started on {port}")
+  
+
+
+
+
+
 if __name__ == "__main__":
 
     if len(sys.argv) < 2:
@@ -86,12 +125,4 @@ if __name__ == "__main__":
         sys.exit(1)
 
     port = int(sys.argv[1])
-
-    if port < 2000 or port > 65535:
-        print("Port number must be between 1024 and 65535")
-        sys.exit(1)
-
-
-    server = HTTPServer(("", port), MyHandler)
-    print(f"Server started on {port}")
-    server.serve_forever()
+    start(port)

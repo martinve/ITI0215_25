@@ -1,9 +1,18 @@
 # ITI0215_25
 
-Koodinäited aine "ITI0215 Hajussüsteemid" praktikumide koodinäited.
+Code examples for the practice sessions of course "ITI0215 Distributed Systems"
 
-* `prax1` alustasime Pythoni `http.server` baasil serveri ehitamist. 
-* `prax2` jätkasime `http.server` baasil serveriga. Muuhulgas:
-    - `nodemon` kasutamine sujuvamaks arenduseks: `nodemon ./server.py 5000`
-    - `POST` päringutele vastamine
-    - `client.py` päringute automatiseerimiseks `requests` teegi kaudu
+* `prax1` we started building a server based on Python `http.server`.
+* `prax2` we contiuned `http.server` based server, including:
+    - using `nodemon` for mode streamlined development process: `nodemon ./server.py 5000`
+    - implemented `POST` request handling in server.
+    - `client.py` for automating making requests via `requests` library.
+* `prax3` stared constructing P2P network:
+    - extended `http.serveri` implemnentation to be multi threaded
+    - application architecture improvements; configuration management.
+    - started to implement topology and scenario as describred in `SCENARIO.md` 
+
+## API Calls
+
+- `/addr?port=<port>`: Ask for a list of nodes from master. If `port` is provided then the master adds it to the list of known nodes if it does not exist there.  
+
