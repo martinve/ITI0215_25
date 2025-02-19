@@ -3,7 +3,7 @@
 Code examples for the practice sessions of course "ITI0215 Distributed Systems"
 
 * `prax1` we started building a server based on Python `http.server`.
-* `prax2` we contiuned `http.server` based server, including:
+* `prax2` we continued implementing `http.server` based server, including:
     - using `nodemon` for mode streamlined development process: `nodemon ./server.py 5000`
     - implemented `POST` request handling in server.
     - `client.py` for automating making requests via `requests` library.
