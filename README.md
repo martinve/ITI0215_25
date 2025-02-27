@@ -11,6 +11,9 @@ Code examples for the practice sessions of course "ITI0215 Distributed Systems"
     - extended `http.server`-based implemnentation to be multi threaded
     - application architecture improvements; configuration management.
     - started to implement topology and scenario as describred in `SCENARIO.md` 
+* `prax4` implemented a basic network. We still need to refactor the code so that 
+    a. the network recovers in case of nodes going offline
+    b. information about network topology is stored in single location
 
 ## API Calls
 
