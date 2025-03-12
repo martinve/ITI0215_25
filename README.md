@@ -14,6 +14,8 @@ Code examples for the practice sessions of course "ITI0215 Distributed Systems"
 * `prax4` implemented a basic network. We still need to refactor the code so that 
     a. the network recovers in case of nodes going offline
     b. information about network topology is stored in single location
+* `prax5` moved configuration and node management to separate module for cleaner code and logic
+* `prax6` - TBC
 
 ## API Calls
 
