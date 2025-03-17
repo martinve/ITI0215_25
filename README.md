@@ -15,7 +15,8 @@ Code examples for the practice sessions of course "ITI0215 Distributed Systems"
     a. the network recovers in case of nodes going offline
     b. information about network topology is stored in single location
 * `prax5` moved configuration and node management to separate module for cleaner code and logic
-* `prax6` - TBC
+* `prax6` - Addded custom logger for better demo/understandability. See `node.py` for usage example
+
 
 ## API Calls
 
