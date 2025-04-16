@@ -16,6 +16,7 @@ Code examples for the practice sessions of course "ITI0215 Distributed Systems"
     b. information about network topology is stored in single location
 * `prax5` moved configuration and node management to separate module for cleaner code and logic
 * `prax6` - Addded custom logger for better demo/understandability. See `node.py` for usage example
+* Gradings took place during weeks 7 and 8
 
 
 ## API Calls
